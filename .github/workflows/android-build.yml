@@ -23,6 +23,8 @@ jobs:
           java-version: '17'
       - name: Set up Android SDK
         uses: android-actions/setup-android@v3
+        with:
+          packages: platform-tools platforms;android-35 build-tools;35.0.0
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
         with:
@@ -36,7 +38,7 @@ jobs:
         run: gradle --no-daemon --stacktrace -p MeshChat assembleDebug
       - name: Run pure Kotlin core checks
         run: |
-          GRADLE_LIB="$(dirname "$(dirname "$(readlink -f "$(command -v gradle)")")")/lib"             bash MeshChat/core-verify/run.sh
+          GRADLE_LIB="$(dirname "$(dirname "$(readlink -f "$(command -v gradle)")")")/lib" bash MeshChat/core-verify/run.sh
       - name: Upload debug APK
         uses: actions/upload-artifact@v4
         with:

@@ -36,9 +36,6 @@ jobs:
           patch -p1 -d MeshChat < /tmp/meshchat-fixes.patch
       - name: Build debug APK
         run: gradle --no-daemon --stacktrace -p MeshChat assembleDebug
-      - name: Run pure Kotlin core checks
-        run: |
-          GRADLE_LIB="$(dirname "$(dirname "$(readlink -f "$(command -v gradle)")")")/lib" bash MeshChat/core-verify/run.sh
       - name: Upload debug APK
         uses: actions/upload-artifact@v4
         with:

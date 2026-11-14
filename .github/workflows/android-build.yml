@@ -1,3 +1,4 @@
+# CI runs Android compilation plus the standalone Kotlin core self-check.
 # CI builds the native Android project from the source archive.
 name: Android build
 on:

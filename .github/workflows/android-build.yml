@@ -1,3 +1,4 @@
+# CI builds the native Android project from the source archive.
 name: Android build
 on:
   push:
